@@ -1,9 +1,10 @@
 import { parsePageId } from 'notion-utils'
+
 import { getCanonicalPageId } from './get-canonical-page-id'
 import { type Site } from './types'
 
 export const mapPageUrl =
-  (site: Site, recordMap: any, searchParams: URLSearchParams) =>
+  (site: Site, _recordMap: any, searchParams: URLSearchParams) =>
   (pageId = '') => {
     const pageUuid = parsePageId(pageId, { uuid: true })!
 
@@ -15,7 +16,7 @@ export const mapPageUrl =
   }
 
 export const getCanonicalPageUrl =
-  (site: Site, recordMap: any) =>
+  (site: Site, _recordMap: any) =>
   (pageId = '') => {
     const pageUuid = parsePageId(pageId, { uuid: true })!
 
