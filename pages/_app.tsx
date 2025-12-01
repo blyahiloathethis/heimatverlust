@@ -1,17 +1,16 @@
-// used for rendering equations (optional)
-import { Inter_Tight } from "next/font/google";
+import { Inter_Tight } from 'next/font/google'
+import type { AppProps } from 'next/app'
+import * as Fathom from 'fathom-client'
+import { useRouter } from 'next/router'
+import { posthog } from 'posthog-js'
+import { useEffect } from 'react'
+
 import 'katex/dist/katex.min.css'
 import 'prismjs/themes/prism-coy.css'
 import 'react-notion-x/src/styles.css'
 import 'styles/global.css'
 import 'styles/notion.css'
 import 'styles/prism-theme.css'
-
-import type { AppProps } from 'next/app'
-import * as Fathom from 'fathom-client'
-import { useRouter } from 'next/router'
-import { posthog } from 'posthog-js'
-import { useEffect } from 'react'
 
 import { bootstrap } from '@/lib/bootstrap-client'
 import {
@@ -27,12 +26,12 @@ if (!isServer) {
 }
 
 const interTight = Inter_Tight({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  style: ["normal", "italic"],
-  display: "swap",
-  variable: "--font-inter-tight",
-});
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+  variable: '--font-inter-tight'
+})
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
@@ -66,8 +65,11 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <div className={interTight.variable} style={{ minHeight: '100vh' }}>
       <style jsx global>{`
-        html, body {
-          font-family: ${interTight.style.fontFamily}, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        html,
+        body {
+          font-family: ${interTight.style.fontFamily}, ui-sans-serif,
+            system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+            sans-serif;
         }
       `}</style>
       <Component {...pageProps} />
